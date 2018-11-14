@@ -38,16 +38,19 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "order_position", nullable = false)
-    private List<OrderPosition> orderPositions;
 
     public Product() {
     }
 
-    Product(String name) {
+    public Product(@NotNull float price, @NotNull String name, String comment, Country country, Category category) {
+        this.price = price;
         this.name = name;
+        this.comment = comment;
+        this.country = country;
+        this.category = category;
     }
+
+
 
 
     /**
@@ -150,11 +153,4 @@ public class Product {
         this.category = category;
     }
 
-    public List<OrderPosition> getOrderPositions() {
-        return orderPositions;
-    }
-
-    public void setOrderPositions(List<OrderPosition> orderPositions) {
-        this.orderPositions = orderPositions;
-    }
 }

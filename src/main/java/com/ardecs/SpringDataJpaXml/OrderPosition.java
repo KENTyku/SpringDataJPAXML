@@ -5,9 +5,9 @@ package com.ardecs.SpringDataJpaXml;/*
  */
 
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 
 /**
@@ -17,17 +17,9 @@ import java.util.List;
 @Entity
 @Table(name = "order_position")
 public class OrderPosition {
-    @Id
-    @GeneratedValue
-    @NotNull
-    private long id;
+    @EmbeddedId
+    private OrderPositionId id;
     private long quantity;
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-//    @JoinColumn(name = "order_id", nullable = false)
-//    private Order order;
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-//    @JoinColumn(name = "product_id", nullable = false)
-//    private Product product;
 
     public OrderPosition() {
     }
@@ -50,20 +42,4 @@ public class OrderPosition {
         this.quantity = id;
     }
 
-
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
-//
-//    public Product getProduct() {
-//        return product;
-//    }
-//
-//    public void setProduct(Product product) {
-//        this.product = product;
-//    }
 }

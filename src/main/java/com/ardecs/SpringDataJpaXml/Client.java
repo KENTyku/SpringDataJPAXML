@@ -28,7 +28,7 @@ public class Client {
     @NotNull
     @Column(name = "telefon_number")
     private String telefonNumber;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(name = "order_id", nullable = false)
     private List<Order> orderss;
 

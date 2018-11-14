@@ -19,7 +19,7 @@ import java.util.List;
 //@Component
 @Entity
 @Table(name = "country")
-    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
+//    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
 public class Country {
 
     @Id
@@ -29,9 +29,6 @@ public class Country {
     @NotNull
     @Column(name = "country_name")
     private String countryName;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "product_id", nullable = false)
-    private List<Product> products;
 
     public Country() {
     }
@@ -74,12 +71,4 @@ public class Country {
         return id + " " + countryName;
     }
 
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }

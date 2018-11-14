@@ -27,11 +27,10 @@ public class Order {
     private String date;
     @NotNull
     private long cost;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "order_position", nullable = false)
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     private List<OrderPosition> orderPositions;
 
     public Order() {

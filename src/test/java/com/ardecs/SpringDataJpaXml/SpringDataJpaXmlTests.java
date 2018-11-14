@@ -19,8 +19,8 @@ public class SpringDataJpaXmlTests {
     public void testCrud() {
 
 
-        Country country1 = new Country("Germany");
-        countryRepository.save(country1);
+        Country country = new Country("Germany");
+        countryRepository.save(country);
 //        ArrayList<Country> countries = (ArrayList<Country>) countryRepository.findAll();
 //        for (Country country : countries) {
 //            System.out.println(country.toString());
@@ -28,7 +28,7 @@ public class SpringDataJpaXmlTests {
 //        Country country2=countryRepository.findById(Long.valueOf(76)).get();
 //        country2.setCountryName("Test");
 //        countryRepository.save(country2);
-//        countryRepository.delete(country1);
+//        countryRepository.delete(country);
 //        System.out.println("TEST "+country2.toString());
 //        countryRepository.deleteById(Long.valueOf(75));
 

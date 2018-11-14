@@ -26,9 +26,6 @@ public class Category {
     @NotNull
     @Column(name = "category_name")
     private String categoryName;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "product_id", nullable = false)
-    private List<Product> products;
 
     public Category() {
     }
@@ -70,11 +67,4 @@ public class Category {
         return id+" "+ categoryName;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
 }
