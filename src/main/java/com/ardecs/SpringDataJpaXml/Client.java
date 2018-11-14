@@ -5,39 +5,38 @@ package com.ardecs.SpringDataJpaXml;/*
  */
 
 
-import org.springframework.data.repository.cdi.Eager;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
 /**
- *
  * @author jury
  */
 //@Component
 @Entity
-@Table(name = "country")
-    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
-public class Country {
+@Table(name = "client")
+public class Client {
 
     @Id
     @GeneratedValue
     @NotNull
     private long id;
     @NotNull
-    @Column(name = "country_name")
-    private String countryName;
+    @Column(name = "name")
+    private String name;
+    @NotNull
+    @Column(name = "telefon_number")
+    private String telefonNumber;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "product_id", nullable = false)
-    private List<Product> products;
+    @JoinColumn(name = "order_id", nullable = false)
+    private List<Order> orderss;
 
-    public Country() {
+    public Client() {
     }
 
-    Country(String countryName) {
-        this.countryName = countryName;
+    Client(String name) {
+        this.name = name;
     }
 
     /**
@@ -57,29 +56,36 @@ public class Country {
     /**
      * @return the country_name
      */
-    public String getCountryName() {
-        return countryName;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param country_name the country_name to set
+     * @param name the name to set
      */
-    public void setCountryName(String country_name) {
-        this.countryName = country_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
 
-        return id + " " + countryName;
+        return id + " " + name;
     }
 
-
-    public List<Product> getProducts() {
-        return products;
+    public String getTelefonNumber() {
+        return telefonNumber;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setTelefonNumber(String telefonNumber) {
+        this.telefonNumber = telefonNumber;
+    }
+
+    public List<Order> getOrderss() {
+        return orderss;
+    }
+
+    public void setOrderss(List<Order> orderss) {
+        this.orderss = orderss;
     }
 }

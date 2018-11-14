@@ -19,12 +19,12 @@ public class SpringDataJpaXmlTests {
     public void testCrud() {
 
 
-        Country country1 = new Country("TEST2222");
+        Country country1 = new Country("Germany");
         countryRepository.save(country1);
-        ArrayList<Country> countries = (ArrayList<Country>) countryRepository.findAll();
-        for (Country country : countries) {
-            System.out.println(country.toString());
-        }
+//        ArrayList<Country> countries = (ArrayList<Country>) countryRepository.findAll();
+//        for (Country country : countries) {
+//            System.out.println(country.toString());
+//        }
 //        Country country2=countryRepository.findById(Long.valueOf(76)).get();
 //        country2.setCountryName("Test");
 //        countryRepository.save(country2);

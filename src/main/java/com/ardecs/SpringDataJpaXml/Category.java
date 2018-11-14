@@ -5,8 +5,6 @@ package com.ardecs.SpringDataJpaXml;/*
  */
 
 
-import org.springframework.data.repository.cdi.Eager;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -18,26 +16,25 @@ import java.util.List;
  */
 //@Component
 @Entity
-@Table(name = "country")
-    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
-public class Country {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue
     @NotNull
     private long id;
     @NotNull
-    @Column(name = "country_name")
-    private String countryName;
+    @Column(name = "category_name")
+    private String categoryName;
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "product_id", nullable = false)
     private List<Product> products;
 
-    public Country() {
+    public Category() {
     }
 
-    Country(String countryName) {
-        this.countryName = countryName;
+    Category(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     /**
@@ -57,23 +54,21 @@ public class Country {
     /**
      * @return the country_name
      */
-    public String getCountryName() {
-        return countryName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     /**
-     * @param country_name the country_name to set
+     * @param catgory_name the catgory_name to set
      */
-    public void setCountryName(String country_name) {
-        this.countryName = country_name;
+    public void setCategoryName(String catgory_name) {
+        this.categoryName = catgory_name;
     }
-
     @Override
-    public String toString() {
+    public String toString(){
 
-        return id + " " + countryName;
+        return id+" "+ categoryName;
     }
-
 
     public List<Product> getProducts() {
         return products;
