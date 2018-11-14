@@ -1,4 +1,4 @@
-package com.ardecs.SpringDataJpaXml;/*
+package com.ardecs.SpringDataJpaXml.Entity;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -16,7 +16,6 @@ import java.util.List;
  */
 //@Component
 @Entity
-@Table(name = "order")
 public class Order {
 
     @Id

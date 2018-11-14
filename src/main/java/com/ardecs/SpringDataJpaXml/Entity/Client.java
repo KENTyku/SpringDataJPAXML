@@ -1,4 +1,4 @@
-package com.ardecs.SpringDataJpaXml;/*
+package com.ardecs.SpringDataJpaXml.Entity;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,7 +15,6 @@ import java.util.List;
  */
 //@Component
 @Entity
-@Table(name = "client")
 public class Client {
 
     @Id
@@ -23,20 +22,19 @@ public class Client {
     @NotNull
     private long id;
     @NotNull
-    @Column(name = "name")
     private String name;
     @NotNull
-    @Column(name = "telefon_number")
     private String telefonNumber;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
     @JoinColumn(name = "order_id", nullable = false)
-    private List<Order> orderss;
+    private List<Order> orders;
 
     public Client() {
     }
 
-    Client(String name) {
+    Client(String name, String telefonNumber) {
         this.name = name;
+        this.telefonNumber = telefonNumber;
     }
 
     /**
@@ -81,11 +79,11 @@ public class Client {
         this.telefonNumber = telefonNumber;
     }
 
-    public List<Order> getOrderss() {
-        return orderss;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setOrderss(List<Order> orderss) {
-        this.orderss = orderss;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

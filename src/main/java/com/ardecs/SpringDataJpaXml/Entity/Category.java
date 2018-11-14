@@ -1,4 +1,4 @@
-package com.ardecs.SpringDataJpaXml;/*
+package com.ardecs.SpringDataJpaXml.Entity;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,16 +7,12 @@ package com.ardecs.SpringDataJpaXml;/*
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
-
 
 /**
- *
  * @author jury
  */
 //@Component
 @Entity
-@Table(name = "category")
 public class Category {
 
     @Id
@@ -24,13 +20,13 @@ public class Category {
     @NotNull
     private long id;
     @NotNull
-    @Column(name = "category_name")
     private String categoryName;
 
     public Category() {
     }
 
     Category(String categoryName) {
+
         this.categoryName = categoryName;
     }
 
@@ -61,10 +57,11 @@ public class Category {
     public void setCategoryName(String catgory_name) {
         this.categoryName = catgory_name;
     }
-    @Override
-    public String toString(){
 
-        return id+" "+ categoryName;
+    @Override
+    public String toString() {
+
+        return id + " " + categoryName;
     }
 
 }

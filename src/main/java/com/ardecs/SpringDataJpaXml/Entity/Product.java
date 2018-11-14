@@ -2,19 +2,17 @@
  * Use and copying for commercial purposes
  * only with the author's permission
  */
-package com.ardecs.SpringDataJpaXml;
+package com.ardecs.SpringDataJpaXml.Entity;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * @author Yuri Tveritin, e-mail: kentyku@bk.ru
  */
 @Entity
 //    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Product p")
-@Table(name = "product")
 public class Product {
 
     @Id
@@ -23,19 +21,13 @@ public class Product {
     private long id;
     @NotNull
     private float price;
-    //    @NotNull
-//    @Column(name = "category_id")
-//    private long categoryID;
-//    @NotNull
-//    @Column(name = "country_id")
-//    private long countryID;
     @NotNull
     private String name;
     private String comment;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 

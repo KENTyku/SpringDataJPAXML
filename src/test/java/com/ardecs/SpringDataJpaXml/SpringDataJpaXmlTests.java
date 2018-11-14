@@ -1,12 +1,12 @@
 package com.ardecs.SpringDataJpaXml;
 
+import com.ardecs.SpringDataJpaXml.Entity.Country;
+import com.ardecs.SpringDataJpaXml.Repository.CountryRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.ArrayList;
 
 @RunWith(SpringJUnit4ClassRunner.class)//специальный класс JUnit,требуется для поддержки контекста в JUnit
 @ContextConfiguration(locations = {"classpath:META-INF/test-context.xml"})//указываем конфиг для работы автокофигурации контекста в тесте

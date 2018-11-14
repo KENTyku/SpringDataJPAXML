@@ -1,4 +1,4 @@
-package com.ardecs.SpringDataJpaXml;/*
+package com.ardecs.SpringDataJpaXml.Entity;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,7 +15,6 @@ import javax.persistence.Table;
  */
 //@Component
 @Entity
-@Table(name = "order_position")
 public class OrderPosition {
     @EmbeddedId
     private OrderPositionId id;

@@ -2,8 +2,9 @@
  * Use and copying for commercial purposes
  * only with the author's permission
  */
-package com.ardecs.SpringDataJpaXml;
+package com.ardecs.SpringDataJpaXml.Repository;
 
+import com.ardecs.SpringDataJpaXml.Entity.Product;
 import org.springframework.data.repository.CrudRepository;
 
 /**

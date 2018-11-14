@@ -1,4 +1,4 @@
-package com.ardecs.SpringDataJpaXml;/*
+package com.ardecs.SpringDataJpaXml.Entity;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,27 +13,23 @@ import java.util.List;
 
 
 /**
- *
  * @author jury
  */
 //@Component
 @Entity
-@Table(name = "country")
 //    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
 public class Country {
-
     @Id
     @GeneratedValue
     @NotNull
     private long id;
     @NotNull
-    @Column(name = "country_name")
     private String countryName;
 
     public Country() {
     }
 
-    Country(String countryName) {
+    public Country(String countryName) {
         this.countryName = countryName;
     }
 
