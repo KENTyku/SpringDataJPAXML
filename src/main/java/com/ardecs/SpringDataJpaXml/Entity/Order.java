@@ -11,11 +11,11 @@ import java.util.List;
 
 
 /**
- *
  * @author jury
  */
 //@Component
 @Entity
+@Table(name = "OrderTable")
 public class Order {
 
     @Id
@@ -24,12 +24,7 @@ public class Order {
     private long id;
     @NotNull
     private String date;
-    @NotNull
-    private long cost;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+    @OneToMany
     private List<OrderPosition> orderPositions;
 
     public Order() {
@@ -71,23 +66,6 @@ public class Order {
     public String toString() {
 
         return id + " " + date;
-    }
-
-
-    public long getCost() {
-        return cost;
-    }
-
-    public void setCost(long cost) {
-        this.cost = cost;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
 

@@ -13,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
-    Order findByClient(String name);
+//    Order findByClient(String name);
 //    Optional<Country> findById(Long id);
 
 

@@ -7,6 +7,7 @@ package com.ardecs.SpringDataJpaXml.Entity;/*
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,8 +26,7 @@ public class Client {
     private String name;
     @NotNull
     private String telefonNumber;
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
-    @JoinColumn(name = "order_id", nullable = false)
+    @OneToMany
     private List<Order> orders;
 
     public Client() {
@@ -78,6 +78,7 @@ public class Client {
     public void setTelefonNumber(String telefonNumber) {
         this.telefonNumber = telefonNumber;
     }
+
 
     public List<Order> getOrders() {
         return orders;
