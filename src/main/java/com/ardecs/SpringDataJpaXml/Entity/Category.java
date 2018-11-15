@@ -25,7 +25,7 @@ public class Category {
     public Category() {
     }
 
-    Category(String categoryName) {
+    public Category(String categoryName) {
 
         this.categoryName = categoryName;
     }

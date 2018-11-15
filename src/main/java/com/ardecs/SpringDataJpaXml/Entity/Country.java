@@ -17,6 +17,8 @@ import java.util.List;
  */
 //@Component
 @Entity
+
+
 //    @NamedQuery(name = "findAllProducts", query = "SELECT p FROM Country p")
 public class Country {
     @Id
@@ -24,6 +26,7 @@ public class Country {
     @NotNull
     private long id;
     @NotNull
+   @Column(unique = true)
     private String countryName;
 
     public Country() {

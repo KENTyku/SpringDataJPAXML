@@ -26,13 +26,13 @@ public class Client {
     private String name;
     @NotNull
     private String telefonNumber;
-    @OneToMany(mappedBy = "client", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "client", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE,CascadeType.REFRESH,CascadeType.PERSIST})
     private List<Order> orders;
 
     public Client() {
     }
 
-    Client(String name, String telefonNumber) {
+    public Client(String name, String telefonNumber) {
         this.name = name;
         this.telefonNumber = telefonNumber;
     }
@@ -65,11 +65,7 @@ public class Client {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
 
-        return id + " " + name;
-    }
 
     public String getTelefonNumber() {
         return telefonNumber;
@@ -79,12 +75,17 @@ public class Client {
         this.telefonNumber = telefonNumber;
     }
 
+//
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
+    @Override
+    public String toString() {
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+        return id + " " + name+" "+telefonNumber;
     }
 }

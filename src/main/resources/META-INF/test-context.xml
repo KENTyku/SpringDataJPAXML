@@ -50,7 +50,6 @@ and open the template in the editor.
     <bean id="entityManagerFactory" class=
             "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <!--<property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>-->
         <property name="persistenceUnitName" value="testingMySQLBase"/>
     </bean>
 
@@ -62,13 +61,4 @@ and open the template in the editor.
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
     </bean>
-    <!--&lt;!&ndash;Выбор поставщика постоянства&ndash;&gt;-->
-    <!--<bean id="jpaVendorAdapter"-->
-          <!--class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
-        <!--<property name="database" value="MYSQL"/>-->
-        <!--<property name="showSql" value="true"/>-->
-        <!--<property name="generateDdl" value="false"/>-->
-        <!--<property name="databasePlatform"-->
-                  <!--value="org.hibernate.dialect.MySQL57Dialect"/>-->
-    <!--</bean>-->
 </beans>

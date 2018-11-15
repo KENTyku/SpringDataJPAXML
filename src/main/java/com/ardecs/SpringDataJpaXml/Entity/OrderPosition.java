@@ -23,8 +23,17 @@ public class OrderPosition {
     public OrderPosition() {
     }
 
-    OrderPosition(long quantity) {
+    public OrderPosition(OrderPositionId id, long quantity) {
+        this.id = id;
         this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderPosition{" +
+                "id="  +
+                ", quantity=" + quantity +
+                '}';
     }
 
     /**

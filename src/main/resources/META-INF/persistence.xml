@@ -8,10 +8,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <!--<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
-            <property name="javax.show_sql" value = "false"/>
-            <!--&lt;!&ndash;<property name="showSQL" value="false"/>&ndash;&gt; не знаю как прописать-->
+            <property name="javax.show_sql" value="false"/>
         </properties>
     </persistence-unit>
 

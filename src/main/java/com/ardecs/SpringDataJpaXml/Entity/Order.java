@@ -24,18 +24,28 @@ public class Order {
     private long id;
     @NotNull
     private String date;
-    @OneToMany(mappedBy = "id.order", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
+    @OneToMany(mappedBy = "id.order", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE,CascadeType.PERSIST,CascadeType.REFRESH})
     private List<OrderPosition> orderPositions;
-    @ManyToOne(fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
+    @ManyToOne(fetch =FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     public Order() {
     }
 
-    Order(String date) {
+    public Order(@NotNull String date, Client client) {
         this.date = date;
+        this.client = client;
     }
+
+    public Order(@NotNull String date, List<OrderPosition> orderPositions, Client client) {
+        this.date = date;
+        this.orderPositions = orderPositions;
+        this.client = client;
+    }
+
+
+
 
     /**
      * @return the id
@@ -68,7 +78,7 @@ public class Order {
     @Override
     public String toString() {
 
-        return id + " " + date;
+        return id + " " + date+" "+client;
     }
 
 

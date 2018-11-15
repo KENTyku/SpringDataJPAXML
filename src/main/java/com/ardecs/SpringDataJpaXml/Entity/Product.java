@@ -24,10 +24,10 @@ public class Product {
     @NotNull
     private String name;
     private String comment;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
@@ -41,8 +41,6 @@ public class Product {
         this.country = country;
         this.category = category;
     }
-
-
 
 
     /**
@@ -145,4 +143,15 @@ public class Product {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", price=" + price +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", country=" + country +
+                ", category=" + category +
+                '}';
+    }
 }

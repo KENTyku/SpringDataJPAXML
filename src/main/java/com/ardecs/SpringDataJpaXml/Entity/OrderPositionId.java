@@ -15,14 +15,27 @@ import java.io.Serializable;
 @Embeddable
 public class OrderPositionId implements Serializable {
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Override
+    public String toString() {
+        return "OrderPositionId{" +
+                "order=" + order +
+                ", product=" + product +
+                '}';
+    }
+
     public OrderPositionId() {
+    }
+
+    public OrderPositionId(Order order, Product product) {
+        this.order = order;
+        this.product = product;
     }
 
     public Order getOrder() {
