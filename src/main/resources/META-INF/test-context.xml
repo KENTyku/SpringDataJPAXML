@@ -36,7 +36,7 @@ and open the template in the editor.
 
 
 
-    <!--<bean id="repository" class="com.ardecs.SpringDataJpaXmll.CountryRepository" abstract="true">-->
+    <!--<bean id="repository" class="com.ardecs.SpringDataJpaXml.CountryRepository" abstract="true">-->
     <!--</bean>-->
 
     <!--Настройка менеджера транзакций-->
@@ -44,7 +44,7 @@ and open the template in the editor.
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <!--<bean id="repository" class="com.ardecs.SpringDataJpaXmll.CountryRepository" abstract="true"/>-->
+    <!--<bean id="repository" class="com.ardecs.SpringDataJpaXml.CountryRepository" abstract="true"/>-->
 
     <!--Настройка фабрики диспетчера сущностей(управляемых контейнером)-->
     <bean id="entityManagerFactory" class=
@@ -57,7 +57,7 @@ and open the template in the editor.
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName"    value="com.mysql.jdbc.Driver"/>
-        <property name="url"   value="jdbc:mysql://localhost:3306/eShop?zeroDateTimeBehavior=convertToNull"/>
+        <property name="url"   value="jdbc:mysql://localhost:3306/eshop?zeroDateTimeBehavior=convertToNull"/>
         <property name="username" value="root"/>
         <property name="password" value="123456"/>
     </bean>

@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)//специальный класс JUnit,требуется для поддержки контекста в JUnit
@@ -32,29 +33,51 @@ public class SpringDataJpaXmlTests {
     @Test
     public void testCrud() {
 
-
-//        Client client = new Client("Yuri", "9051111111");
-        Client client=clientRepository.findById((long) 33).get();
+        //registration
+        Client client = new Client("Yuri", "9051111111");
         clientRepository.save(client);
-        Order order = new Order("11.11.2011", client);
+        Long idClient = client.getId();
+        System.out.println(idClient);
+        client = null;
+
+        //Sign in
+        client = clientRepository.findById(idClient).get();
+//        clientRepository.save(client);
+        //create order
+        Date date = new Date();
+        Order order = new Order(date.toString(), client);
 //        orderRepository.save(order);
-        Product product = productRepository.findByName("Sony");
-        id = new OrderPositionId(order, product);
+
+        //find Products
+        String name = "Sony";
+        //select Category
+        List<Category> categoriesList = (ArrayList<Category>) categoryRepository.findAll();
+        //doing request
+        List<Product> products = productRepository.findByCategoryAndNameLike(categoriesList.get(0), name);
+        //show results
+        for (Product product : products) {
+            System.out.println(product);
+        }
+        //select product and quantity
+//        Product product = productRepository.findByName("Sony");
+        id = new OrderPositionId(order, products.get(0));
         OrderPosition orderPosition = new OrderPosition(id, 5);
         List<OrderPosition> list = new ArrayList<>();
         list.add(orderPosition);
 
-        product = productRepository.findByName("iPhone");
-        id = new OrderPositionId(order, product);
+        //select product and quantity
+//        product = productRepository.findByName("iPhone");
+        id = new OrderPositionId(order, products.get(1));
         orderPosition = new OrderPosition(id, 2);
         list.add(orderPosition);
 
+        //add to order and save order
         order.setOrderPositions(list);
         orderRepository.save(order);
 
-//show all orders for client
-        List<Order> ordersList =  orderRepository.findAllOrder(33);
-        for (Order item :ordersList) {
+        //show all orders for client
+        List<Order> ordersList = orderRepository.findAllOrder(idClient);
+        for (Order item : ordersList) {
             System.out.println(item.getId());
 
         }
