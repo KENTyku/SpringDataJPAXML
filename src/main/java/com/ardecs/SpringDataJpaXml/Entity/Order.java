@@ -24,8 +24,11 @@ public class Order {
     private long id;
     @NotNull
     private String date;
-    @OneToMany
+    @OneToMany(mappedBy = "id.order", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
     private List<OrderPosition> orderPositions;
+    @ManyToOne(fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 
     public Order() {
     }
@@ -75,5 +78,13 @@ public class Order {
 
     public void setOrderPositions(List<OrderPosition> orderPositions) {
         this.orderPositions = orderPositions;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

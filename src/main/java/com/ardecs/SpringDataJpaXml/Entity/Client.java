@@ -26,7 +26,7 @@ public class Client {
     private String name;
     @NotNull
     private String telefonNumber;
-    @OneToMany
+    @OneToMany(mappedBy = "client", fetch =FetchType.EAGER,cascade = {CascadeType.REMOVE})
     private List<Order> orders;
 
     public Client() {
