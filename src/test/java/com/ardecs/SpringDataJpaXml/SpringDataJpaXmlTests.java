@@ -33,14 +33,15 @@ public class SpringDataJpaXmlTests {
     public void testCrud() {
 
 
-        Client client = new Client("Yuri", "9051111111");
+//        Client client = new Client("Yuri", "9051111111");
+        Client client=clientRepository.findById((long) 33).get();
         clientRepository.save(client);
         Order order = new Order("11.11.2011", client);
 //        orderRepository.save(order);
         Product product = productRepository.findByName("Sony");
         id = new OrderPositionId(order, product);
         OrderPosition orderPosition = new OrderPosition(id, 5);
-        List<OrderPosition> list = new ArrayList<>() ;
+        List<OrderPosition> list = new ArrayList<>();
         list.add(orderPosition);
 
         product = productRepository.findByName("iPhone");
@@ -51,6 +52,12 @@ public class SpringDataJpaXmlTests {
         order.setOrderPositions(list);
         orderRepository.save(order);
 
+//show all orders for client
+        List<Order> ordersList =  orderRepository.findAllOrder(33);
+        for (Order item :ordersList) {
+            System.out.println(item.getId());
+
+        }
 
 
 //        ArrayList<Country> countries = (ArrayList<Country>) countryRepository.findAll();
