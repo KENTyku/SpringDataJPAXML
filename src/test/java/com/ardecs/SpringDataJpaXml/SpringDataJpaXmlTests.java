@@ -42,31 +42,32 @@ public class SpringDataJpaXmlTests {
 
         //Sign in
         client = clientRepository.findById(idClient).get();
-//        clientRepository.save(client);
+
         //create order
         Date date = new Date();
         Order order = new Order(date.toString(), client);
-//        orderRepository.save(order);
+
 
         //find Products
         String name = "Sony";
         //select Category
         List<Category> categoriesList = (ArrayList<Category>) categoryRepository.findAll();
+        for (Category item : categoriesList) {
+            System.out.println(item.getCategoryName());
+        }
         //doing request
-        List<Product> products = productRepository.findByCategoryAndNameLike(categoriesList.get(0), name);
+        List<Product> products = productRepository.findByCategoryAndNameLike(categoriesList.get(1), name);
         //show results
         for (Product product : products) {
             System.out.println(product);
         }
         //select product and quantity
-//        Product product = productRepository.findByName("Sony");
         id = new OrderPositionId(order, products.get(0));
         OrderPosition orderPosition = new OrderPosition(id, 5);
         List<OrderPosition> list = new ArrayList<>();
         list.add(orderPosition);
 
         //select product and quantity
-//        product = productRepository.findByName("iPhone");
         id = new OrderPositionId(order, products.get(1));
         orderPosition = new OrderPosition(id, 2);
         list.add(orderPosition);
@@ -81,18 +82,6 @@ public class SpringDataJpaXmlTests {
             System.out.println(item.getId());
 
         }
-
-
-//        ArrayList<Country> countries = (ArrayList<Country>) countryRepository.findAll();
-//        for (Country country : countries) {
-//            System.out.println(country.toString());
-//        }
-//        Country country2=countryRepository.findById(Long.valueOf(76)).get();
-//        country2.setCountryName("Test");
-//        countryRepository.save(country2);
-//        countryRepository.delete(country);
-//        System.out.println("TEST "+country2.toString());
-//        countryRepository.deleteById(Long.valueOf(75));
 
     }
 
